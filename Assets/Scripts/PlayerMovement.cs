@@ -18,5 +18,7 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * _movementSpeed, ForceMode.Force);
         if (Time.realtimeSinceStartup >= 3f)
             _rigidbody.useGravity = true;
+
+        
     }
 }
