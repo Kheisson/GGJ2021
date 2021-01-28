@@ -4,30 +4,23 @@ using UnityEngine;
 
 public class PuzzlePanel : MonoBehaviour
 {
-    Vector3 _xPositionShowPos = new Vector3(1,0,0);
-    Vector3 _xPositionHidePos = new Vector3(7,0,0);
-    [SerializeField] bool _isShown = false;
+    Animator _anim;
+    bool _isShown = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            StartCoroutine(MoveToPosition(_isShown));
+        if (Input.GetKeyDown(KeyCode.C))
+            _anim.SetTrigger("ShowGate");
+        if (Input.GetKeyDown(KeyCode.V))
+            _anim.SetTrigger("HideGate");
+            
     }
 
-    IEnumerator MoveToPosition(bool isShown)
-    {
-        if (isShown == false)
-            this.transform.position = Vector3.Lerp(_xPositionHidePos, _xPositionShowPos, 0.0001f * Time.deltaTime);
-        else
-            this.transform.position = Vector3.Lerp(_xPositionShowPos, _xPositionHidePos, 0.0001f * Time.deltaTime);
-        _isShown = !isShown;
-        yield return new WaitForSeconds(1f);
-    }
 }
