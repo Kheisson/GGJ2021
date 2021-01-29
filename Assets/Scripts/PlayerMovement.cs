@@ -17,8 +17,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(0))
             _rigidbody.AddForce(Vector3.up * _movementSpeed, ForceMode.Force);
         if (Time.realtimeSinceStartup >= 3f)
-            _rigidbody.useGravity = true;
+            _rigidbody.useGravity = true;  
+    }
 
-        
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Obstacle")
+            Destroy(other.gameObject);
+        if (other.gameObject.tag == "Collectable")
+            Destroy(other.gameObject);
     }
 }

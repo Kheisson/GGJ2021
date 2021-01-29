@@ -9,4 +9,9 @@ public class MoveLeft : MonoBehaviour
     {
         this.gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }

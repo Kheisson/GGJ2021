@@ -6,6 +6,6 @@ using UnityEngine;
 public class SO_Stage : ScriptableObject
 {
     public int stage;
-    public int amountToSpawn;
-    public Sprite pattern;
+    public List<Sprite> sprites;
+    public int secondsForStage;
 }
