@@ -12,6 +12,8 @@ public class MoveBackground : MonoBehaviour
     private Vector2 startPos;
     private float newXPos;
 
+    public bool shouldMove = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,12 @@ public class MoveBackground : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (shouldMove == true)
+            MoveImage();
+    }
+
+    void MoveImage()
     {
         newXPos = Mathf.Repeat(Time.time * -moveSpeed, offset);
         transform.position = startPos + Vector2.right * newXPos;

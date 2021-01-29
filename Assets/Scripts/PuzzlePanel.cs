@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PuzzlePanel : MonoBehaviour
 {
-    Animator _anim;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        _anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowGate() => anim.SetTrigger("ShowGate");
+    public void HideGate() => anim.SetTrigger("HideGate");
+
+    public void SetNewSetOfPuzzles()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-            _anim.SetTrigger("ShowGate");
-        if (Input.GetKeyDown(KeyCode.V))
-            _anim.SetTrigger("HideGate");
-            
+        Image[] spritesInChildren = GetComponentsInChildren<Image>();
+        foreach (Image sprite in spritesInChildren)
+            Debug.Log(sprite.name);
     }
 
 }

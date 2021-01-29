@@ -5,11 +5,12 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] spawnables;
+    Coroutine spawnCoroutine;
 
     void SpawnObjects()
     {
         int randomIndex = Random.Range(0, spawnables.Length);
-        Vector3 spawnPos = new Vector3(15.5f, Random.Range(-4, 7), 0);
+        Vector3 spawnPos = new Vector3(14, Random.Range(-1.5f, 2.6f), 0);
         Instantiate(spawnables[randomIndex], spawnPos, Quaternion.identity);
     }
    
@@ -24,9 +25,27 @@ public class SpawnManager : MonoBehaviour
 
     public void Spawner(bool shouldSpawn)
     {
-        if (shouldSpawn)
-            StartCoroutine(SpawnControl());
-        else
-            StopAllCoroutines();
+        if (shouldSpawn == true) 
+        {
+            if (spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+            }
+            else
+            {
+                spawnCoroutine = StartCoroutine(SpawnControl()); 
+            }
+        } 
+        else 
+        { 
+            StopCoroutine(spawnCoroutine); 
+        }
+    }
+
+    public void DestroyAllSpawnables()
+    {
+        MoveLeft[] allSpawnables = GameObject.FindObjectsOfType<MoveLeft>();
+        foreach (var spawnedItem in allSpawnables)
+            Destroy(spawnedItem.gameObject);
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float _movementSpeed = 5f;
+    [SerializeField] ScoreCount _scoreCountUI;
     Rigidbody _rigidbody;
+    int currentScore = 0;
 
     private void Start()
     {
@@ -16,15 +18,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
             _rigidbody.AddForce(Vector3.up * _movementSpeed, ForceMode.Force);
-        if (Time.realtimeSinceStartup >= 3f)
-            _rigidbody.useGravity = true;  
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Obstacle")
+        {
+            _rigidbody.mass += 1;
             Destroy(other.gameObject);
+        }
+
         if (other.gameObject.tag == "Collectable")
+        {
+            currentScore += 300;
             Destroy(other.gameObject);
+        }
+
+    }
+    public void SetKinematic(bool isKinematic) => _rigidbody.isKinematic = isKinematic;
+
+    public int CurrentScore()
+    {
+        _scoreCountUI.UpdateScore(currentScore.ToString());
+        return currentScore;
     }
 }
