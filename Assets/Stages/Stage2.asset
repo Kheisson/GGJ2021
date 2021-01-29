@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf73cec82178d147867da7e6dd3c360, type: 3}
+  m_Name: Stage2
+  m_EditorClassIdentifier: 
+  stage: 2
+  sprites:
+  - {fileID: 21300000, guid: a765a0da898cd404a8b7c7580bcd0db6, type: 3}
+  - {fileID: 21300000, guid: 3d9e2c93bfdeb77428890e59dca7fac9, type: 3}
+  - {fileID: 21300000, guid: 3b5008db250f9c04ca111b463defa254, type: 3}
+  secondsForStage: 15

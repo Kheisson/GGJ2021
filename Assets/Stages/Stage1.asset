@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Stage1
   m_EditorClassIdentifier: 
   stage: 1
-  sprites: []
-  secondsForStage: 5
+  sprites:
+  - {fileID: 21300000, guid: ce5c0ca46b756c542a0ec7431576961b, type: 3}
+  - {fileID: 21300000, guid: 5edb4f38de0493b4b86deb3920b9cecf, type: 3}
+  - {fileID: 21300000, guid: e07aff2b30a22044ca6dc6785f89f1fd, type: 3}
+  secondsForStage: 10
